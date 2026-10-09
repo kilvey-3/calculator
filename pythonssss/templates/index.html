@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Multi-Task Smart Calculator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<main class="calculator">
+    <header class="topbar">
+        <div>
+            <div class="brand">MULTI-TASK CALCULATOR</div>
+            <div class="tagline">One expression. Many calculations.</div>
+        </div>
+        <button id="historyToggle" class="history-btn">HISTORY</button>
+    </header>
+
+    <section class="screen">
+        <div class="screen-label" id="screenLabel">SMART MODE</div>
+        <input id="expression" class="expression" autocomplete="off"
+               placeholder="Type an expression..." aria-label="Expression">
+        <div class="answer-label">ANSWER</div>
+        <div id="answer" class="answer">0</div>
+    </section>
+
+    <section class="modes">
+        <button class="mode active" data-mode="Smart">SMART</button>
+        <button class="mode" data-mode="Scientific">SCIENTIFIC</button>
+        <button class="mode" data-mode="Statistics">STATISTICS</button>
+        <button class="mode" data-mode="Batch">BATCH</button>
+    </section>
+
+    <section id="smartInfo" class="smart-info">
+        <strong>SMART SOLVE</strong>
+        <span>Enter one long expression and the calculator can also show a calculation breakdown.</span>
+    </section>
+
+    <section id="stepsPanel" class="steps-panel hidden">
+        <div class="panel-title">CALCULATION BREAKDOWN</div>
+        <div id="steps"></div>
+    </section>
+
+    <section id="statsPanel" class="stats-panel hidden">
+        <div class="panel-title">STATISTICS RESULT</div>
+        <div id="statsGrid" class="stats-grid"></div>
+    </section>
+
+    <section id="batchPanel" class="batch-panel hidden">
+        <div class="panel-title">BATCH RESULTS</div>
+        <div id="batchResults"></div>
+    </section>
+
+    <section class="keypad">
+        <button class="fn" data-insert="sin(">sin</button>
+        <button class="fn" data-insert="cos(">cos</button>
+        <button class="fn" data-insert="tan(">tan</button>
+        <button class="fn" data-insert="sqrt(">√</button>
+        <button class="fn" data-insert="log(">log</button>
+        <button class="fn" data-insert="ln(">ln</button>
+
+        <button data-action="clear" class="danger">AC</button>
+        <button data-action="backspace" class="control">⌫</button>
+        <button data-insert="(">(</button>
+        <button data-insert=")">)</button>
+        <button data-insert="^">^</button>
+        <button data-insert="%">%</button>
+
+        <button data-insert="7">7</button>
+        <button data-insert="8">8</button>
+        <button data-insert="9">9</button>
+        <button data-insert="/">÷</button>
+        <button data-insert="pi">π</button>
+        <button data-insert="e">e</button>
+
+        <button data-insert="4">4</button>
+        <button data-insert="5">5</button>
+        <button data-insert="6">6</button>
+        <button data-insert="*">×</button>
+        <button data-insert="abs(">abs</button>
+        <button data-insert="factorial(">n!</button>
+
+        <button data-insert="1">1</button>
+        <button data-insert="2">2</button>
+        <button data-insert="3">3</button>
+        <button data-insert="-">−</button>
+        <button data-insert="asin(">asin</button>
+        <button data-insert="acos(">acos</button>
+
+        <button data-insert="0" class="zero">0</button>
+        <button data-insert=".">.</button>
+        <button data-insert="+">+</button>
+        <button data-action="calculate" class="equals">=</button>
+        <button data-insert="floor(">floor</button>
+        <button data-insert="ceil(">ceil</button>
+    </section>
+
+    <div class="hint">
+        Examples: <code>12+45*232/2+23-4</code> · <code>sqrt(144)+5^2</code> · <code>500*20%</code>
+    </div>
+</main>
+
+<aside id="historyPanel" class="history-panel hidden">
+    <div class="history-head">
+        <h2>CALCULATION HISTORY</h2>
+        <button id="closeHistory">×</button>
+    </div>
+    <button id="clearHistory" class="clear-history">CLEAR HISTORY</button>
+    <div id="historyList"></div>
+</aside>
+
+<div id="toast" class="toast"></div>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
